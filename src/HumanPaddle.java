@@ -3,14 +3,16 @@ import java.awt.Graphics;
 
 public class HumanPaddle implements Paddle {
 	double y, yVel;
-	boolean upAccel ,downAccel;
+	boolean upAccel ,downAccel, left,right;
 	final double SLOWSPEED = 0.94;
 	int player,x;
 	
 	public HumanPaddle(int players) {
 		upAccel = false; 
 		downAccel = false;
-		y = 210; yVel = 0;
+		left = false;
+		right = false;
+		y = 210; yVel = 0;//
 		if(players == 1) {
 			x = 30;
 		}
@@ -20,17 +22,17 @@ public class HumanPaddle implements Paddle {
 		}
 	
 	public void draw(Graphics g) {
-		g.setColor(Color.white);
-		g.fillRect(x, (int) y, 20, 80);
+		g.setColor(Color.CYAN);
+		g.fillRect((int)x,(int) y,2, 80);
 		
 	}
 	
 	public void move() {
 		if(upAccel) {
-			y -= 2;
+			y -= 4;
 		}
 		else if(downAccel) {
-			y += 2;
+			y += 4;
 		}
 		else if(!upAccel && !downAccel) {
 			yVel *= SLOWSPEED;
@@ -40,8 +42,8 @@ public class HumanPaddle implements Paddle {
 		if(y <= 0) {
 			y = 0;
 		}
-		else if(y >= 450) {
-			y = 450;
+		else if(y >= 420) {
+			y = 420;
 		}
 		
 		if(yVel >= 5) {
@@ -49,6 +51,17 @@ public class HumanPaddle implements Paddle {
 		}
 		else if(yVel <= -5) {
 			yVel = -5;
+		}
+		
+		if(right) {
+			x += 2;
+		}
+		else if(left) {
+			x -= 2;
+		}
+		
+		else if(!left && !right) {
+			yVel *= SLOWSPEED;
 		}
 	}
 	
@@ -62,9 +75,23 @@ public class HumanPaddle implements Paddle {
 		downAccel = input;
 	}
 	
+	public void setLeft(boolean input) {
+		left = input;
+	}
+	
+	public void setRight(boolean input) {
+		right = input;
+	}
+	
 	public int getY() {
 		return (int)y;
 	}
+	
+	
+	public int getX() {
+		return (int)x;
+	}
+	
 	
 	
 	

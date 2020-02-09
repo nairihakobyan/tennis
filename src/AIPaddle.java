@@ -107,6 +107,12 @@ public class AIPaddle implements Paddle {
 	public int getY1() {
 		return (int)y1;
 	}
+
+	@Override
+	public int getX() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 
