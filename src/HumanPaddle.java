@@ -12,7 +12,7 @@ public class HumanPaddle implements Paddle {
 		downAccel = false;
 		left = false;
 		right = false;
-		y = 210; yVel = 0;//
+		y = 210; yVel = 0;
 		if(players == 1) {
 			x = 30;
 		}
@@ -29,10 +29,10 @@ public class HumanPaddle implements Paddle {
 	
 	public void move() {
 		if(upAccel) {
-			y -= 4;
+			y -= 5;
 		}
 		else if(downAccel) {
-			y += 4;
+			y += 5;
 		}
 		else if(!upAccel && !downAccel) {
 			yVel *= SLOWSPEED;
@@ -54,10 +54,10 @@ public class HumanPaddle implements Paddle {
 		}
 		
 		if(right) {
-			x += 2;
+			x += 4;
 		}
 		else if(left) {
-			x -= 2;
+			x -= 4;
 		}
 		
 		else if(!left && !right) {

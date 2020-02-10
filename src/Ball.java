@@ -1,5 +1,5 @@
 import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.Graphics; 
 
 public class Ball {
 	
@@ -7,12 +7,26 @@ public class Ball {
 	double x,xVel;
 	
 	
+	
 	public Ball() {
 		x = 350;
 		y = 250;
-		xVel = 1;
-		yVel = 1;
+		xVel = randomSpeed() * randomDirection();
+		yVel = randomSpeed() * randomDirection();
 	} 
+	
+	public double randomSpeed() {
+		return (Math.random() * 2 + 2);
+	}
+	public int randomDirection() {
+		int rand =  (int)(Math.random() * 2 );
+		if(rand == 1) {
+			return 1;
+		}
+		else {
+			return -1;
+		}
+	}
 	
 	public void draw(Graphics g) {
 		g.setColor(Color.red);
@@ -22,7 +36,6 @@ public class Ball {
 	public void checkPadlleCollision(Paddle p1,Paddle p2) {
 		if(x <= p1.getX()+1) {
 			if(y >= p1.getY() && y <= p1.getY() + 80) {
-//				System.out.println(p1.getX());
 				xVel = -xVel;
 				
 			}
