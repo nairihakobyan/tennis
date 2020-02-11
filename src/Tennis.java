@@ -4,17 +4,18 @@ import java.awt.Graphics;
 import java.awt.Image; 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
-import javax.swing.JButton; 
+ 
 
 public class Tennis extends Applet  implements Runnable,KeyListener {
+	
 	private static final long serialVersionUID = 1L;
+	
+	
 	final int HEIGHT = 500, WIDTH = 700;
 	Thread thread;
-	HumanPaddle p1;
-	AIPaddle p2;
-	Ball b1; 
-	JButton button;
+	HumanBoard p1;
+	AIBoard p2;
+	Ball b1;  
 	boolean gameStart;
 	Graphics gf;
 	Image img;
@@ -29,11 +30,14 @@ public class Tennis extends Applet  implements Runnable,KeyListener {
 		this.addKeyListener(this);
 		 
 		gameStart = false;
-		p1 = new HumanPaddle(1);
+		
+		p1 = new HumanBoard(1);
 		b1 = new Ball();
-		p2 = new AIPaddle(2,b1);
+		p2 = new AIBoard(2,b1);
+		
 		img = createImage(WIDTH,HEIGHT);
 		gf = img.getGraphics();
+		
 		thread = new Thread(this);
 		thread.start();
 		
@@ -56,6 +60,7 @@ public class Tennis extends Applet  implements Runnable,KeyListener {
 			p2.draw(gf);
 			b1.draw(gf);
 		}
+		
 		if(!gameStart) {
 			gf.setColor(Color.WHITE);
 			gf.drawString("Tennis", 340, 100);

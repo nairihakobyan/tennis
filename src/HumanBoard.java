@@ -1,15 +1,15 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class HumanPaddle implements Paddle {
+public class HumanBoard implements Board {
 	double y, yVel;
-	boolean upAccel ,downAccel, left,right;
+	boolean up  ,down , left,right;
 	final double SLOWSPEED = 0.94;
 	int player,x;
 	
-	public HumanPaddle(int players) {
-		upAccel = false; 
-		downAccel = false;
+	public HumanBoard(int players) {
+		up = false; 
+		down = false;
 		left = false;
 		right = false;
 		y = 210; yVel = 0;
@@ -28,13 +28,13 @@ public class HumanPaddle implements Paddle {
 	}
 	
 	public void move() {
-		if(upAccel) {
-			y -= 5;
+		if(up) {
+			y -= 3;
 		}
-		else if(downAccel) {
-			y += 5;
+		else if(down) {
+			y += 3;
 		}
-		else if(!upAccel && !downAccel) {
+		else if(!up && !down) {
 			yVel *= SLOWSPEED;
 		}
 		yVel += yVel;
@@ -68,11 +68,11 @@ public class HumanPaddle implements Paddle {
 	
 	
 	public void setUpAccel(boolean input) {
-		upAccel = input;
+		up = input;
 	}
 	
 	public void setDownAccel(boolean input) {
-		downAccel = input;
+		down = input;
 	}
 	
 	public void setLeft(boolean input) {
@@ -91,10 +91,4 @@ public class HumanPaddle implements Paddle {
 	public int getX() {
 		return (int)x;
 	}
-	
-	
-	
-	
-	
-
 }

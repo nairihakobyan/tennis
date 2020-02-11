@@ -3,7 +3,7 @@ import java.awt.Graphics;
 
 import javax.swing.JButton;
 
-public class AIPaddle implements Paddle {
+public class AIBoard implements Board {
 	double y,yVel;
 	boolean upAccel ,downAccel,wAccel,sAccel;
 	final double SLOWSPEED = 0.94;
@@ -11,7 +11,7 @@ public class AIPaddle implements Paddle {
 	Ball b1;
 	JButton button;
 	
-	public AIPaddle(int players, Ball b) {
+	public AIBoard(int players, Ball b) {
 		upAccel = false; 
 		downAccel = false;
 		b1 = b;

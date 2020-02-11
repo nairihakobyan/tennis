@@ -11,12 +11,12 @@ public class Ball {
 	public Ball() {
 		x = 350;
 		y = 250;
-		xVel = randomSpeed() * randomDirection();
-		yVel = randomSpeed() * randomDirection();
+		xVel = randomDirection();
+		yVel = randomSpeed() ;
 	} 
 	
 	public double randomSpeed() {
-		return (Math.random() * 2 + 2);
+		return (Math.random() * 1 + 1);
 	}
 	public int randomDirection() {
 		int rand =  (int)(Math.random() * 2 );
@@ -33,7 +33,7 @@ public class Ball {
 		g.fillRoundRect((int)x,(int) y, 20, 20, 20, 20);
 	}
 	
-	public void checkPadlleCollision(Paddle p1,Paddle p2) {
+	public void checkPadlleCollision(Board p1,Board p2) {
 		if(x <= p1.getX()+1) {
 			if(y >= p1.getY() && y <= p1.getY() + 80) {
 				xVel = -xVel;

@@ -1,7 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class HumanPaddle2 implements Paddle {
+public class HumanPaddle2 implements Board {
 	double y,ySpeed;
 	boolean upAccel,downAccel ,left,right;
 	final double SLOWSPEED = 0.94;
